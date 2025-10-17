@@ -1,58 +1,378 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIRTUS CONSULTORIA - Em Construção</title>
+    <title>Virtus CRM | Excelência em Consultoria e Vendas Kommo CRM</title>
+    <!-- Carregamento do Tailwind CSS e Font Inter -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Carregamento de Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
     <style>
-        /* Estilos CSS para deixar a página toda preta e centralizar o conteúdo */
+        /* Definindo as cores e a fonte globalmente */
+        :root {
+            --color-primary: #272e74;
+            /* Azul Escuro */
+            --color-accent: #f47555;
+            /* Laranja Coral */
+            --color-dark: #1f2746;
+            /* Azul Marinho para fundo */
+            --text-light: #f3f4f6;
+        }
+
         body {
-            background-color: #000000; /* Fundo preto */
-            color: #FFFFFF; /* Texto branco para contraste */
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* Utilitários baseados nas cores da marca */
+        .logo-fill-accent {
+            fill: var(--color-accent);
+        }
+
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #d15c3c;
+            /* Tonalidade mais escura do coral */
+        }
+
+        .section-title {
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .bg-primary-dark {
+            background-color: var(--color-dark);
+        }
+
+        .text-accent {
+            color: var(--color-accent);
+        }
+
+        /* NOVO ESTILO: Hover escuro para os links da Navbar (cor: #d15c3c) */
+        .navbar-hover-dark:hover {
+            color: #d15c3c;
+        }
+
+        /* Estilos do Carrossel (Removidos, mas mantidos os nomes das classes base) */
+        .carousel-item {
+            min-width: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-track {
             display: flex;
-            justify-content: center; /* Centraliza horizontalmente */
-            align-items: center; /* Centraliza verticalmente */
-            height: 100vh; /* Ocupa a altura total da viewport */
-            margin: 0;
-            text-align: center;
-            flex-direction: column; /* Organiza os elementos verticalmente */
-        }
-        .container {
-            padding: 20px;
-        }
-        h1 {
-            font-size: 2.5em; /* Tamanho maior para o título */
-            margin-bottom: 10px;
-        }
-        p {
-            font-size: 1.2em;
-        }
-        /* Estilo para um toque extra */
-        .loading-icon {
-            font-size: 3em;
-            margin-top: 20px;
-            animation: spin 2s linear infinite; /* Animação simples de giro */
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            transition: transform 0.5s ease-in-out;
         }
     </style>
 </head>
-<body>
 
-    <div class="container">
-        <h1>🚧 **VIRTUS CONSULTORIA** 🛠️</h1>
-        <p>
-            Nosso novo site está **em construção**!
-            Estamos trabalhando duro para trazer a você uma experiência completa e informativa.
-        </p>
-        <p>
-            Agradecemos sua paciência e volte em breve!
-        </p>
-        <div class="loading-icon">⏳</div>
-    </div>
+<body class="bg-white">
 
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white shadow-lg">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo Virtus CRM -->
+            <a href="#inicio" class="flex items-center space-x-2">
+                <!-- Ícone V (Placeholder visual da logo) -->
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Simulação de um "V" angular com a cor de destaque e crescimento -->
+                    <path d="M12 21L3 3H7L12 13L17 3H21L12 21Z" class="fill-[#272e74] opacity-50" />
+                    <path d="M12 21L12.5 14L17 3H21L12 21Z" class="logo-fill-accent" />
+                </svg>
+                <span class="text-xl font-extrabold text-[#272e74]">Virtus CRM</span>
+            </a>
+
+            <!-- Links de Navegação (Desktop) -->
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#inicio" class="text-gray-600 navbar-hover-dark transition duration-150 font-semibold">INÍCIO</a>
+                <a href="#recursos" class="text-gray-600 navbar-hover-dark transition duration-150 font-semibold">RECURSOS</a>
+                <a href="#beneficios" class="text-gray-600 navbar-hover-dark transition duration-150 font-semibold">BENEFÍCIOS</a>
+                <a href="#sobre" class="text-gray-600 navbar-hover-dark transition duration-150 font-semibold">SOBRE NÓS</a>
+                <a href="#planos" class="text-gray-600 navbar-hover-dark transition duration-150 font-semibold">PLANOS</a>
+                <a href="#contato" class="btn-primary px-4 py-2 rounded-full font-semibold hover:bg-[#d15c3c] transition duration-150">CONTATO</a>
+            </div>
+
+            <!-- Botão Menu Mobile (Hamburguer) -->
+            <button id="menu-button" class="md:hidden p-2 rounded-md hover:bg-gray-100">
+                <svg class="w-6 h-6 text-[#272e74]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Menu Mobile (Drawer) -->
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40 bg-white">
+            <div class="p-4 flex flex-col space-y-4">
+                <button id="close-menu-button" class="self-end p-2 rounded-md hover:bg-gray-100">
+                    <svg class="w-6 h-6 text-[#272e74]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <a href="#inicio" class="text-gray-700 navbar-hover-dark transition duration-150 font-medium py-2 border-b border-gray-100">INÍCIO</a>
+                <a href="#recursos" class="text-gray-700 navbar-hover-dark transition duration-150 font-medium py-2 border-b border-gray-100">RECURSOS</a>
+                <a href="#beneficios" class="text-gray-700 navbar-hover-dark transition duration-150 font-medium py-2 border-b border-gray-100">BENEFÍCIOS</a>
+                <a href="#sobre" class="text-gray-700 navbar-hover-dark transition duration-150 font-medium py-2 border-b border-gray-100">SOBRE NÓS</a>
+                <a href="#planos" class="text-gray-700 navbar-hover-dark transition duration-150 font-medium py-2 border-b border-gray-100">PLANOS</a>
+                <a href="#contato" class="btn-primary text-center py-3 rounded-lg font-semibold mt-4">CONTATO</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section (INÍCIO) - Estática -->
+    <section id="inicio" class="bg-primary-dark text-white py-20 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-12">
+
+            <!-- Coluna de Conteúdo (Texto) -->
+            <div class="md:w-1/2 text-center md:text-left order-2 md:order-1">
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
+                    Transforme sua Gestão com Nosso <span class="text-accent">CRM</span>
+                </h1>
+                <!-- H3 transformado em P para estrutura, mas com estilo forte -->
+                <p class="text-xl text-gray-300 mb-8">
+                    Otimize seus processos e alcance resultados incríveis com nosso CRM e serviços personalizados de implementação. Descubra como simplificar sua rotina e maximizar a produtividade com soluções completas e eficientes.
+                </p>
+                <a href="#recursos" class="btn-primary text-lg px-8 py-3 rounded-xl font-bold inline-block shadow-xl uppercase transition duration-300">
+                    SAIBA MAIS
+                </a>
+            </div>
+
+            <!-- Coluna de Imagem (Placeholder) -->
+            <div class="md:w-1/2 flex justify-center order-1 md:order-2">
+                <!-- Imagem Placeholder que usa as cores da marca -->
+                <img src="https://placehold.co/600x400/272e74/f47555?text=Gestão+Digital+CRM" alt="Ilustração de Gestão Digital e CRM" class="rounded-xl shadow-2xl w-full max-w-md opacity-90 transition duration-300 hover:opacity-100" onerror="this.onerror=null; this.src='https://placehold.co/600x400/272e74/f47555?text=Virtus+CRM';">
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Recursos e Benefícios (RECURSOS & BENEFÍCIOS) -->
+    <section id="recursos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-3xl md:text-4xl mb-4 text-center">Recursos e Vantagens Exclusivas</h2>
+            <p class="text-gray-600 text-lg mb-12 text-center max-w-3xl mx-auto">
+                Integramos a melhor ferramenta do mercado com a consultoria que garante o seu sucesso.
+            </p>
+
+            <div class="flex flex-col lg:flex-row gap-12">
+
+                <!-- Vantagens do CRM Kommo -->
+                <div id="recursos-kommo" class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold text-accent mb-6 flex items-center space-x-2">
+                        <i data-lucide="zap" class="w-6 h-6"></i>
+                        <span>Vantagens do Kommo CRM</span>
+                    </h3>
+                    <div class="space-y-4 text-gray-700">
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i>
+                            <p><strong>Mensagens Unificadas:</strong> Centralize WhatsApp, Instagram, Telegram e e-mail no seu funil de vendas. Não perca nenhuma conversa!</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i>
+                            <p><strong>Automação Inteligente:</strong> Crie robôs de vendas (*bots*) que qualificam leads, agendam reuniões e nutrem seus contatos 24/7.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i>
+                            <p><strong>Amor Cego (Blind Lead):</strong> Recurso exclusivo para gestão de leads frios com foco em engajamento e conversão futura.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i>
+                            <p><strong>Pipeline Visual:</strong> Arraste e solte seus negócios entre as etapas, garantindo controle total do funil.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vantagens da Consultoria Virtus CRM -->
+                <div id="beneficios" class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold text-primary-dark mb-6 flex items-center space-x-2">
+                        <i data-lucide="briefcase" class="w-6 h-6 text-[#272e74]"></i>
+                        <span>Benefícios da Consultoria Virtus CRM</span>
+                    </h3>
+                    <div class="space-y-4 text-gray-700">
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="award" class="w-5 h-5 text-accent flex-shrink-0 mt-1"></i>
+                            <p><strong>Mapeamento Nordestino:</strong> Adaptamos o CRM à realidade e ao ritmo de vendas da sua região (Recife/Fortaleza), focando em resultados rápidos.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="layers" class="w-5 h-5 text-accent flex-shrink-0 mt-1"></i>
+                            <p><strong>Configuração Otimizada:</strong> Implementação feita por especialistas (Pedro & Vanessa), garantindo que cada recurso do Kommo maximize seu ROI.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="user-check" class="w-5 h-5 text-accent flex-shrink-0 mt-1"></i>
+                            <p><strong>Treinamento de Excelência (*Virtus*):</strong> Sua equipe aprende a usar 100% da plataforma, focando na adoção para evitar que o CRM vire um "cemitério de dados".</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Planos Kommo (PLANOS) -->
+    <section id="planos" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-3xl md:text-4xl mb-4 text-center">Escolha o Plano Ideal do Kommo CRM</h2>
+            <p class="text-gray-600 text-lg mb-12 text-center max-w-3xl mx-auto">
+                Encontre o nível de automação e recursos que sua empresa precisa para decolar.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Plano Básico (Base) -->
+                <div class="bg-white p-8 rounded-xl shadow-2xl border-t-4 border-gray-300 flex flex-col">
+                    <h3 class="text-2xl font-bold text-gray-700 mb-2">Base</h3>
+                    <p class="text-gray-500 mb-4">Para equipes pequenas e iniciantes</p>
+                    <p class="text-4xl font-extrabold text-primary-dark mb-6">R$ XXX /mês</p>
+                    <ul class="space-y-3 text-gray-700 flex-grow mb-6">
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Gestão de Leads</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Email e Chamadas</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="x" class="w-4 h-4 text-gray-400"></i><span>Automação Básica</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="x" class="w-4 h-4 text-gray-400"></i><span>Bots de Vendas (Limitado)</span></li>
+                    </ul>
+                    <a href="#contato" class="btn-primary text-center py-3 rounded-lg font-bold">Solicitar Consultoria</a>
+                </div>
+
+                <!-- Plano Avançado (Core) - Mais Popular -->
+                <div class="bg-primary-dark text-white p-8 rounded-xl shadow-2xl border-t-4 border-accent flex flex-col transform scale-105 relative">
+                    <div class="bg-accent text-primary-dark text-xs font-bold px-3 py-1 rounded-full absolute top-0 mt-3 left-1/2 transform -translate-x-1/2 shadow-lg">MAIS POPULAR</div>
+                    <h3 class="text-2xl font-bold mb-2 text-accent mt-5">Avançado</h3>
+                    <p class="text-gray-300 mb-4">O pacote completo para crescimento</p>
+                    <p class="text-4xl font-extrabold mb-6">R$ YYY /mês</p>
+                    <ul class="space-y-3 text-gray-300 flex-grow mb-6">
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Tudo do Plano Base</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Integração Total com WhatsApp</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Robôs de Vendas (Avançado)</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Relatórios Customizados</span></li>
+                    </ul>
+                    <!-- O hover do botão está configurado internamente no .btn-primary:hover para #d15c3c -->
+                    <a href="#contato" class="btn-primary text-center py-3 rounded-lg font-bold transition duration-300 hover:bg-[#d15c3c]">Começar Agora</a>
+                </div>
+
+                <!-- Plano Enterprise (Premium) -->
+                <div class="bg-white p-8 rounded-xl shadow-2xl border-t-4 border-gray-300 flex flex-col">
+                    <h3 class="text-2xl font-bold text-gray-700 mb-2">Enterprise</h3>
+                    <p class="text-gray-500 mb-4">Para grandes equipes e necessidades complexas</p>
+                    <p class="text-4xl font-extrabold text-primary-dark mb-6">R$ ZZZ /mês</p>
+                    <ul class="space-y-3 text-gray-700 flex-grow mb-6">
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Tudo do Plano Avançado</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>APIs e Integrações Abiertas</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Suporte 24/7 Dedicado</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Gerenciamento de Múltiplas Contas</span></li>
+                    </ul>
+                    <a href="#contato" class="btn-primary text-center py-3 rounded-lg font-bold">Falar com Consultor</a>
+                </div>
+            </div>
+
+            <p class="text-center text-sm text-gray-500 mt-10">*Os valores acima são placeholders. Fale com a Virtus CRM para um orçamento preciso com consultoria inclusa.</p>
+        </div>
+    </section>
+
+    <!-- 4. Sobre Nós (SOBRE NÓS) - Versão Compacta -->
+    <section id="sobre" class="bg-primary-dark text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">A Virtus na sua empresa</h2>
+            <p class="text-gray-300 text-lg max-w-4xl mx-auto mb-8">
+                Unimos a expertise técnica com a visão estratégica para garantir que sua implantação de CRM não seja apenas software, mas uma ferramenta de **excelência** e **crescimento**.
+            </p>
+            <a href="#contato" class="text-accent hover:text-white transition duration-150 border-b-2 border-accent hover:border-white pb-1 font-semibold">
+                Saiba mais sobre nossa história de sucesso &rarr;
+            </a>
+        </div>
+    </section>
+
+    <!-- 5. Fale Conosco (CONTATO) -->
+    <section id="contato" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-3xl md:text-4xl mb-4 text-center">Fale com a Virtus CRM</h2>
+            <p class="text-gray-600 text-lg mb-12 text-center max-w-3xl mx-auto">
+                Preencha o formulário e um de nossos especialistas (Pedro ou Vanessa) entrará em contato para um diagnóstico gratuito.
+            </p>
+
+            <div class="max-w-2xl mx-auto p-8 rounded-xl shadow-2xl border-t-4 border-accent">
+                <!-- 🚨 ALTERAÇÃO CRÍTICA AQUI 🚨 -->
+                <!-- O FormSubmit envia os dados para o seu e-mail. Você DEVE substituir o placeholder abaixo pelo seu e-mail real. -->
+                <!-- Após o primeiro envio, você receberá um e-mail de confirmação para ativar o formulário. -->
+                <form id="contact-form" class="space-y-6" action="https://formsubmit.co/cttvirtuscrm@gmail.com" method="POST">
+                    <!-- Campo Oculto para o Assunto do Email -->
+                    <input type="hidden" name="_subject" value="Nova Solicitação de CRM - Site Virtus CRM">
+                    <!-- Campo Oculto para redirecionar para a mesma página após o envio (opcional) -->
+                    <input type="hidden" name="_next" value="#contato">
+
+                    <div>
+                        <label for="nome" class="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mail Corporativo</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent">
+                    </div>
+                    <div>
+                        <label for="telefone" class="block text-sm font-medium text-gray-700 mb-1">Telefone / WhatsApp</label>
+                        <input type="tel" id="telefone" name="telefone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent">
+                    </div>
+                    <div>
+                        <label for="mensagem" class="block text-sm font-medium text-gray-700 mb-1">Desafio com o CRM (Opcional)</label>
+                        <textarea id="mensagem" name="mensagem" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary w-full py-3 rounded-lg text-lg font-bold uppercase shadow-md transition duration-300">
+                        Enviar Proposta Personalizada
+                    </button>
+                    <!-- Esta mensagem agora será controlada pelo serviço FormSubmit -->
+                    <p id="form-message" class="text-center text-sm mt-4 hidden"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-dark text-gray-400 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+            <p>&copy; 2025 Virtus CRM. Todos os direitos reservados.</p>
+            <p class="mt-2">Excelência em Vendas e Relacionamento.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // Inicializa os ícones do Lucide
+        lucide.createIcons();
+
+        // ----------------------------------------------------
+        // Lógica da Navbar Mobile
+        // ----------------------------------------------------
+        const menuButton = document.getElementById('menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = mobileMenu.querySelectorAll('a');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        // Fechar menu ao clicar em um link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // ----------------------------------------------------
+        // A Lógica de envio foi removida e substituída pelo atributo 'action' do formulário,
+        // que usa um serviço de terceiros (FormSubmit) para enviar o e-mail.
+        // ----------------------------------------------------
+    </script>
 </body>
+
 </html>
