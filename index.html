@@ -73,6 +73,30 @@
             display: flex;
             transition: transform 0.5s ease-in-out;
         }
+
+        #hero-background {
+            /* 🚨 LINHA PARA ALTERAR A IMAGEM DE FUNDO DA HERO SECTION 🚨 */
+            background-image: url('./img/representacao-da-experiencia-utilizador-e-design-da-interface.jpg'); 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        #hero-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(31, 39, 70, 0.85); /* 85% opacidade do --color-dark */
+            z-index: 0;
+        }
+
+        #hero-content {
+            position: relative;
+            z-index: 10;
+        }
     </style>
 </head>
 
@@ -81,16 +105,14 @@
     <!-- Navbar -->
     <header class="sticky top-0 z-50 bg-white shadow-lg">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <!-- Logo Virtus CRM -->
+            <!-- Logo Virtus CRM - AGORA COM A IMAGEM FORNECIDA -->
             <a href="#inicio" class="flex items-center space-x-2">
-                <!-- Ícone V (Placeholder visual da logo) -->
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Simulação de um "V" angular com a cor de destaque e crescimento -->
-                    <path d="M12 21L3 3H7L12 13L17 3H21L12 21Z" class="fill-[#272e74] opacity-50" />
-                    <path d="M12 21L12.5 14L17 3H21L12 21Z" class="logo-fill-accent" />
-                </svg>
+                <img 
+                    src="./img/Gemini_Generated_Image_vkrpz6vkrpz6vkrp-removebg-preview (1).png"
+                    alt="Logomarca Virtus CRM"
+                    class="w-8 h-8"
+                >
                 <span class="text-xl font-extrabold text-[#272e74]">Virtus CRM</span>
-            </a>
 
             <!-- Links de Navegação (Desktop) -->
             <div class="hidden md:flex space-x-8 text-sm font-medium">
@@ -128,29 +150,19 @@
         </div>
     </header>
 
-    <!-- 1. Hero Section (INÍCIO) - Estática -->
-    <section id="inicio" class="bg-primary-dark text-white py-20 md:py-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-12">
-
-            <!-- Coluna de Conteúdo (Texto) -->
-            <div class="md:w-1/2 text-center md:text-left order-2 md:order-1">
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
-                    Transforme sua Gestão com Nosso <span class="text-accent">CRM</span>
-                </h1>
-                <!-- H3 transformado em P para estrutura, mas com estilo forte -->
-                <p class="text-xl text-gray-300 mb-8">
-                    Otimize seus processos e alcance resultados incríveis com nosso CRM e serviços personalizados de implementação. Descubra como simplificar sua rotina e maximizar a produtividade com soluções completas e eficientes.
-                </p>
-                <a href="#recursos" class="btn-primary text-lg px-8 py-3 rounded-xl font-bold inline-block shadow-xl uppercase transition duration-300">
-                    SAIBA MAIS
-                </a>
-            </div>
-
-            <!-- Coluna de Imagem (Placeholder) -->
-            <div class="md:w-1/2 flex justify-center order-1 md:order-2">
-                <!-- Imagem Placeholder que usa as cores da marca -->
-                <img src="https://placehold.co/600x400/272e74/f47555?text=Gestão+Digital+CRM" alt="Ilustração de Gestão Digital e CRM" class="rounded-xl shadow-2xl w-full max-w-md opacity-90 transition duration-300 hover:opacity-100" onerror="this.onerror=null; this.src='https://placehold.co/600x400/272e74/f47555?text=Virtus+CRM';">
-            </div>
+    <!-- 1. Hero Section (INÍCIO) - COM IMAGEM DE FUNDO -->
+    <section id="hero-background" class="text-white py-20 md:py-48">
+        <div id="hero-content" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
+                Transforme sua Gestão com Nosso <span class="text-accent">CRM</span>
+            </h1>
+            <p class="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                Otimize seus processos e alcance resultados incríveis com nosso CRM e serviços personalizados de implementação. Descubra como simplificar sua rotina e maximizar a produtividade com soluções completas e eficientes.
+            </p>
+            <a href="#recursos" class="btn-primary text-lg px-8 py-3 rounded-xl font-bold inline-block shadow-xl uppercase transition duration-300">
+                SAIBA MAIS
+            </a>
         </div>
     </section>
 
@@ -179,10 +191,7 @@
                             <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i>
                             <p><strong>Automação Inteligente:</strong> Crie robôs de vendas (*bots*) que qualificam leads, agendam reuniões e nutrem seus contatos 24/7.</p>
                         </div>
-                        <div class="flex items-start space-x-3">
-                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i>
-                            <p><strong>Amor Cego (Blind Lead):</strong> Recurso exclusivo para gestão de leads frios com foco em engajamento e conversão futura.</p>
-                        </div>
+                        
                         <div class="flex items-start space-x-3">
                             <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0 mt-1"></i>
                             <p><strong>Pipeline Visual:</strong> Arraste e solte seus negócios entre as etapas, garantindo controle total do funil.</p>
@@ -199,11 +208,11 @@
                     <div class="space-y-4 text-gray-700">
                         <div class="flex items-start space-x-3">
                             <i data-lucide="award" class="w-5 h-5 text-accent flex-shrink-0 mt-1"></i>
-                            <p><strong>Mapeamento Nordestino:</strong> Adaptamos o CRM à realidade e ao ritmo de vendas da sua região, focando em resultados rápidos.</p>
+                            <p><strong>Mapeamento de experiência do cliente por segmento :</strong> Adaptamos o CRM à realidade e ao ritmo de vendas da sua região, focando em resultados rápidos.</p>
                         </div>
                         <div class="flex items-start space-x-3">
                             <i data-lucide="layers" class="w-5 h-5 text-accent flex-shrink-0 mt-1"></i>
-                            <p><strong>Configuração Otimizada:</strong> Implementação feita por especialistas (Pedro & Vanessa), garantindo que cada recurso do Kommo maximize seu ROI.</p>
+                            <p><strong>Configuração Otimizada:</strong> Implementação feita por especialistas, garantindo que cada recurso do Kommo maximize seu ROI.</p>
                         </div>
                         <div class="flex items-start space-x-3">
                             <i data-lucide="user-check" class="w-5 h-5 text-accent flex-shrink-0 mt-1"></i>
@@ -227,50 +236,67 @@
 
                 <!-- Plano Básico (Base) -->
                 <div class="bg-white p-8 rounded-xl shadow-2xl border-t-4 border-gray-300 flex flex-col">
-                    <h3 class="text-2xl font-bold text-gray-700 mb-2">Base</h3>
-                    <p class="text-gray-500 mb-4">Para equipes pequenas e iniciantes</p>
-                    <p class="text-4xl font-extrabold text-primary-dark mb-6">R$ XXX /mês</p>
+                    <h3 class="text-2xl font-bold text-gray-700 mb-2">Básico</h3>
+                    <p class="text-gray-500 mb-4">Para pequenos negócios que querem aumentar suas vendas</p>
+                    <p class="text-4xl font-extrabold text-primary-dark mb-6">R$ 82 por usuário/mês</p>
                     <ul class="space-y-3 text-gray-700 flex-grow mb-6">
-                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Gestão de Leads</span></li>
-                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Email e Chamadas</span></li>
-                        <li class="flex items-center space-x-2"><i data-lucide="x" class="w-4 h-4 text-gray-400"></i><span>Automação Básica</span></li>
-                        <li class="flex items-center space-x-2"><i data-lucide="x" class="w-4 h-4 text-gray-400"></i><span>Bots de Vendas (Limitado)</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Limites básicos</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Inbox unificado</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Vários funis de venda</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Painel personalizável</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Kommo IA</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Agentes de IA</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="X" class="w-4 h-4 text-gray-400"></i><span class="text-gray-400">Difusão</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="X" class="w-4 h-4 text-gray-400"></i><span class="text-gray-400">Automaçãoes</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="X" class="w-4 h-4 text-gray-400"></i><span class="text-gray-400">Salesbot</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="X" class="w-4 h-4 text-gray-400"></i><span class="text-gray-400">Limites de atividade</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="X" class="w-4 h-4 text-gray-400"></i><span class="text-gray-400">Pacote de super campos</span></li>
                     </ul>
-                    <a href="#contato" class="btn-primary text-center py-3 rounded-lg font-bold">Solicitar Consultoria</a>
+                    <a href="#contato" class="btn-primary text-center py-3 rounded-lg font-bold">Falar com Consultor</a>
                 </div>
 
                 <!-- Plano Avançado (Core) - Mais Popular -->
                 <div class="bg-primary-dark text-white p-8 rounded-xl shadow-2xl border-t-4 border-accent flex flex-col transform scale-105 relative">
                     <div class="bg-accent text-primary-dark text-xs font-bold px-3 py-1 rounded-full absolute top-0 mt-3 left-1/2 transform -translate-x-1/2 shadow-lg">MAIS POPULAR</div>
                     <h3 class="text-2xl font-bold mb-2 text-accent mt-5">Avançado</h3>
-                    <p class="text-gray-300 mb-4">O pacote completo para crescimento</p>
-                    <p class="text-4xl font-extrabold mb-6">R$ YYY /mês</p>
+                    <p class="text-gray-300 mb-4">Para empresas que querem automatizar seu trabalho</p>
+                    <p class="text-4xl font-extrabold mb-6">R$ 136 por usuário/mês</p>
                     <ul class="space-y-3 text-gray-300 flex-grow mb-6">
-                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Tudo do Plano Base</span></li>
-                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Integração Total com WhatsApp</span></li>
-                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Robôs de Vendas (Avançado)</span></li>
-                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Relatórios Customizados</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Tudo do Plano Básico</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Limites avançados</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Difusão</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Automaçãoes</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Salesbot</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="X" class="w-4 h-4 text-gray-400"></i><span class="text-gray-400">Limites de atividade</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="X" class="w-4 h-4 text-gray-400"></i><span class="text-gray-400">Pacote de super campos</span></li>
                     </ul>
                     <!-- O hover do botão está configurado internamente no .btn-primary:hover para #d15c3c -->
-                    <a href="#contato" class="btn-primary text-center py-3 rounded-lg font-bold transition duration-300 hover:bg-[#d15c3c]">Começar Agora</a>
+                    <a href="#contato" class="btn-primary text-center py-3 rounded-lg font-bold transition duration-300 hover:bg-[#d15c3c]">Falar com Consultor</a>
                 </div>
 
                 <!-- Plano Enterprise (Premium) -->
                 <div class="bg-white p-8 rounded-xl shadow-2xl border-t-4 border-gray-300 flex flex-col">
-                    <h3 class="text-2xl font-bold text-gray-700 mb-2">Enterprise</h3>
-                    <p class="text-gray-500 mb-4">Para grandes equipes e necessidades complexas</p>
-                    <p class="text-4xl font-extrabold text-primary-dark mb-6">R$ ZZZ /mês</p>
+                    <h3 class="text-2xl font-bold text-gray-700 mb-2">Empresarial</h3>
+                    <p class="text-gray-500 mb-4">Para empresas maiores que lidam com muitos leadss</p>
+                    <p class="text-4xl font-extrabold text-primary-dark mb-6">R$ 245 por usuário/mês</p>
                     <ul class="space-y-3 text-gray-700 flex-grow mb-6">
-                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Tudo do Plano Avançado</span></li>
-                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>APIs e Integrações Abiertas</span></li>
-                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Suporte 24/7 Dedicado</span></li>
-                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Gerenciamento de Múltiplas Contas</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Limites empresariais</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Inbox unificado</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Vários funis de venda</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Painel personalizável</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Kommo IA</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Agentes de IA</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Difusão</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Automaçãoes</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Salesbot</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Limites de atividade</span></li>
+                        <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-accent"></i><span>Pacote de super campos</span></li>
                     </ul>
                     <a href="#contato" class="btn-primary text-center py-3 rounded-lg font-bold">Falar com Consultor</a>
                 </div>
             </div>
 
-            <p class="text-center text-sm text-gray-500 mt-10">*Os valores acima são placeholders. Fale com a Virtus CRM para um orçamento preciso com consultoria inclusa.</p>
+            <p class="text-center text-sm text-gray-500 mt-10">*Os valores acima são para assinaturas de 6 meses. Fale com a Virtus CRM para um orçamento preciso com consultoria inclusa.</p>
         </div>
     </section>
 
