@@ -106,7 +106,7 @@
     <header class="sticky top-0 z-50 bg-white shadow-lg">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <!-- Logo Virtus CRM - AGORA COM A IMAGEM FORNECIDA -->
-            <a href="#inicio" class="flex items-center space-x-2">
+            <a href="#" class="flex items-center space-x-2">
                 <img 
                     src="./img/Gemini_Generated_Image_vkrpz6vkrpz6vkrp-removebg-preview (1).png"
                     alt="Logomarca Virtus CRM"
@@ -116,7 +116,7 @@
 
             <!-- Links de Navegação (Desktop) -->
             <div class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="#inicio" class="text-gray-600 navbar-hover-dark transition duration-150 font-semibold">INÍCIO</a>
+                <a href="#" class="text-gray-600 navbar-hover-dark transition duration-150 font-semibold">INÍCIO</a>
                 <a href="#recursos" class="text-gray-600 navbar-hover-dark transition duration-150 font-semibold">RECURSOS</a>
                 <a href="#beneficios" class="text-gray-600 navbar-hover-dark transition duration-150 font-semibold">BENEFÍCIOS</a>
                 <a href="#sobre" class="text-gray-600 navbar-hover-dark transition duration-150 font-semibold">SOBRE NÓS</a>
@@ -394,10 +394,46 @@
             });
         });
 
+        
         // ----------------------------------------------------
-        // A Lógica de envio foi removida e substituída pelo atributo 'action' do formulário,
-        // que usa um serviço de terceiros (FormSubmit) para enviar o e-mail.
+        // Lógica de Scroll para o Topo (Logo e INÍCIO)
         // ----------------------------------------------------
+        const logoLink = document.getElementById('logo-link');
+        const inicioLinkDesktop = document.getElementById('inicio-link-desktop');
+        const inicioLinkMobile = document.getElementById('inicio-link-mobile');
+
+        // Função para forçar a rolagem suave ao topo e prevenir a recarga
+        function scrollToTopAndPreventDefault(event) {
+            
+            const targetHref = event.currentTarget.getAttribute('href');
+            
+            // Só executa a rolagem suave se for um link de topo (#inicio ou #)
+            if (targetHref === '#inicio' || targetHref === '#') { 
+                // Previne o comportamento padrão (recarregar)
+                event.preventDefault(); 
+                
+                // Rola suavemente para o topo da página (posição 0)
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Aplica o listener ao link da Logo
+        if (logoLink) {
+            logoLink.addEventListener('click', scrollToTopAndPreventDefault);
+        }
+
+        // Aplica o listener ao link INÍCIO (Desktop)
+        if (inicioLinkDesktop) {
+            inicioLinkDesktop.addEventListener('click', scrollToTopAndPreventDefault);
+        }
+
+        // Aplica o listener ao link INÍCIO (Mobile)
+        if (inicioLinkMobile) {
+            inicioLinkMobile.addEventListener('click', scrollToTopAndPreventDefault);
+        }
     </script>
 </body>
 
